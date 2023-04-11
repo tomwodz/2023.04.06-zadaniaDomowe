@@ -7,30 +7,49 @@ public class Verification2 {
     public static boolean verification(int[] tab, int[] tab2, int[] tab3) {
         boolean run = true;
         boolean temp = false;
-        int temp_tab = 21; //nigdy nie wylosuje liczby 21
         int sameCounts = 0;
+        boolean nextVer = true;
 
+        // Wykluczenie takich samych liczb w ramach jednej tablicy
         for (int i = 0; i < tab.length; i++) {
-            for (int j = 0; j < tab.length; j++) {
-                if ((tab[i] == tab2[j]) && (tab[i] != temp_tab)) {
-                    for (int k = 0; k < tab.length; k++) {
-                        if (tab2[j] == tab3[k]) {
-                            temp_tab = tab3[k];
-                            if(temp_tab != 21) {
+            for (int j = i + 1; j < tab.length; j++) {
+                if (tab[i] == tab[j]) {
+                    nextVer = false;
+                }
+                if (tab2[i] == tab2[j]) {
+                    nextVer = false;
+                }
+                if (tab3[i] == tab3[j]) {
+                    nextVer = false;
+                }
+            }
+        }
+
+        if (nextVer == true) {
+            for (int i = 0; i < tab.length; i++) {
+
+                weDontNeedMore:
+                for (int j = 0; j < tab.length; j++) {
+                    if (tab[i] == tab2[j]) {
+                        for (int k = 0; k < tab.length; k++) {
+                            if (tab2[j] == tab3[k]) {
                                 temp = true;
+                                break weDontNeedMore; //warunek spełiony dla jakiegos "i"
                             }
                         }
                     }
-
                 }
+
+                if (temp == true) {
+                    sameCounts++;
+                }
+                if (sameCounts == 3) {
+                    run = false;
+                }
+                temp = false;
             }
-            if (temp == true) {
-                sameCounts++;
-            }
-            if (sameCounts == 3) {
-                run = false;
-            }
-            temp = false;
+        } else {
+            run = true;
         }
         return run;
     }

@@ -19,11 +19,11 @@ public class ZadanieDomowe10 {
         int guquantityGeneration = 0;
 
         do {
-            for(int i =0; i < tab.length; i++){
-                tab[i] = radom.nextInt(-20,20);
-                tab2[i] = radom.nextInt(-20,20);
-                tab3[i] = radom.nextInt(-20,20);
-           }
+            for (int i = 0; i < tab.length; i++) {
+                tab[i] = radom.nextInt(-20, 20);
+                tab2[i] = radom.nextInt(-20, 20);
+                tab3[i] = radom.nextInt(-20, 20);
+            }
             run = Verification2.verification(tab, tab2, tab3);
             guquantityGeneration = Id.advanceId();
         } while (run);
@@ -37,23 +37,24 @@ public class ZadanieDomowe10 {
         System.out.println(Arrays.toString(tab3));
 
         System.out.println("Ilosc powtornej generacji tablic ('jednocześnie') 3 na raz: " + guquantityGeneration);
+
+        System.out.println("Takie same liczy to: ");
+        for (int i = 0; i < tab.length; i++) {
+            for (int j = 0; j < tab.length; j++) {
+                if (tab[i] == tab2[j]) {
+                    for (int k = 0; k < tab.length; k++) {
+                        if (tab2[j] == tab3[k]) {
+                            System.out.print(tab[i] + " ");
+                        }
+
+                    }
+                }
+            }
+
+        }
     }
+}
 
-    }
-
-
-     /*      boolean test = false;
-        boolean test2 = false;
-        boolean test3 = false;*/
-
-    /*
-            test = Verification.verification(tab, tab2, tab3);
-            test2 = Verification.verification(tab2);
-            test3 = Verification.verification(tab3);
-
-            if(((test == true) && (test2 == true)) && (test3 == true)){
-                run = true;
-            }*/
 
 
 
