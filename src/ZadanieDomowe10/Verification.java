@@ -2,7 +2,11 @@ package ZadanieDomowe10;
 
 class Verification {
 
-        // wersja 2
+
+        // Weryfikacja, czy spełniony jest warunek [3,3,3,6,7][4,4,4,8,9...][7,7,7....] itd.
+        // Nieaktywne.
+
+        // wersja 1.1
     public static boolean verification2(int[] tab) {
         boolean run = false;
         for(int i = 0; i < tab.length; i++){

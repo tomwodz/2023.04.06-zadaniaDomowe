@@ -1,7 +1,7 @@
 package ZadanieDomowe10;
 
-import ZadanieDomowe9.Id;
-import ZadanieDomowe9.ZadanieDomowe9;
+import ZadanieDomowe10.Id;
+import ZadanieDomowe10.ZadanieDomowe10;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -11,41 +11,22 @@ import java.util.Random;
         Program ma wypisywać wygenerowane tablice oraz ilość ponownych generacji tablic.*/
 public class ZadanieDomowe10 {
     public static void main(String[] args) {
+        Random radom = new Random();
         int[] tab = new int[10];
         int[] tab2 = new int[tab.length];
         int[] tab3 = new int[tab.length];
-
-        Random radom = new Random();
-
-
-        boolean run = false;
-        boolean test = false;
-        boolean test2 = false;
-        boolean test3 = false;
-
+        boolean run = true;
         int guquantityGeneration = 0;
 
         do {
-
             for(int i =0; i < tab.length; i++){
                 tab[i] = radom.nextInt(-20,20);
                 tab2[i] = radom.nextInt(-20,20);
                 tab3[i] = radom.nextInt(-20,20);
            }
-
-            // 2 wersje weryfikacji
-
-            test = Verification.verification(tab);
-            test2 = Verification.verification2(tab2);
-            test3 = Verification.verification2(tab3);
-
-            if(((test == true) && (test2 == true)) && (test3 == true)){
-                run = true;
-            }
-
+            run = Verification2.verification(tab, tab2, tab3);
             guquantityGeneration = Id.advanceId();
-
-        } while (!run);
+        } while (run);
 
         Arrays.sort(tab);
         Arrays.sort(tab2);
@@ -61,6 +42,18 @@ public class ZadanieDomowe10 {
     }
 
 
+     /*      boolean test = false;
+        boolean test2 = false;
+        boolean test3 = false;*/
+
+    /*
+            test = Verification.verification(tab, tab2, tab3);
+            test2 = Verification.verification(tab2);
+            test3 = Verification.verification(tab3);
+
+            if(((test == true) && (test2 == true)) && (test3 == true)){
+                run = true;
+            }*/
 
 
 
